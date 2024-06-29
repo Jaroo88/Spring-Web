@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/tasks")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class TaskController {
     private final DbService service;
     private final TaskMapper taskMapper;
@@ -35,7 +36,7 @@ public class TaskController {
     }
     @DeleteMapping(value = "{taskId}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long taskId) {
-        service.deleteTask(taskId);  // Dodajemy wywołanie metody usuwającej w serwisie
+        service.deleteTask(taskId);
         return ResponseEntity.ok().build();
 
     }
